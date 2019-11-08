@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>AJAX Test_01day</title>
+	<script type="text/javascript">
+		function getXhr(){
+			var xhr = null ; 
+			if (window.XMLHttpRequest) {
+				xhr = new XMLHttpRequest();
+			} else {
+				xhr = new ActiveXobject("Microsoft.XMLHttp") ; 
+			}
+			return xhr;
+			 
+		}
+
+		function getText(){
+			//1、获取AJAX对象
+			var xhr = getXhr() ;
+			//2、设置回调函数
+			xhr.onreadystatechange = function(){ 
+				if (xhr.readyState==4 && xhr.status == 200) {
+					var txt = xhr.responseText ; 
+					alert(txt) ;
+				}
+			};
+			//3、创建请求
+			xhr.open("get" , "get_text.do" , true);
+			//4、发送请求
+			xhr.send(null);
+		}
+
+	</script>
+</head>
+<body>
+	<a href="javascript:;" onclick="getText()">获取文本</a>
+</body>
+</html>
